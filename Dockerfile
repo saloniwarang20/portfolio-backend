@@ -1,4 +1,5 @@
-FROM maven:3.9-eclipse-temurin-22 AS builder
+# Fix: Upgraded the build environment from Java 22 to Java 25
+FROM maven:3.9-eclipse-temurin-25 AS builder
 
 WORKDIR /app
 
@@ -15,7 +16,7 @@ COPY src src
 RUN ./mvnw clean package -DskipTests
 
 
-FROM eclipse-temurin:22-jdk
+FROM eclipse-temurin:25-jdk
 
 WORKDIR /app
 
